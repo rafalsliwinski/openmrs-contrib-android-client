@@ -4,6 +4,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 import org.openmrs.client.adapters.ScreenSlidePagerAdapter;
 import org.openmrs.client.R;
 
@@ -22,5 +24,11 @@ public class DashboardActivity extends ACBaseActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        initializeSQLCipher();
     }
+
+    private void initializeSQLCipher() {
+        SQLiteDatabase.loadLibs(this);
+    }
+
 }
